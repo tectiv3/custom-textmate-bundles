@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>changed</key>
+	<dict>
+		<key>command</key>
+		<string>#!/usr/bin/env ruby
+require 'json'
+
+stdin = STDIN.read
+indent_level = (ENV['TM_SOFT_TABS'] == "NO" ? "\t" : " "*ENV['TM_TAB_SIZE'].to_i )
+
+begin
+hash = JSON.parse stdin
+print JSON.pretty_generate(hash, indent: indent_level)
+rescue Exception =&gt; e
+print stdin
+end
+</string>
+	</dict>
+	<key>isDelta</key>
+	<true/>
+	<key>uuid</key>
+	<string>4B74F2DE-E051-4E8D-9124-EBD90A2CDD2B</string>
+</dict>
+</plist>
