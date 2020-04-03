@@ -8,27 +8,23 @@
 	<string>#!/usr/bin/env bash
 . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
 
-prettier --stdin --parser=php || exit_show_tool_tip</string>
+(eval "jq --indent 4 -S '.'") || exit_show_tool_tip</string>
 	<key>input</key>
 	<string>document</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>~@P</string>
 	<key>name</key>
-	<string>Prettier</string>
+	<string>Sort</string>
 	<key>outputCaret</key>
-	<string>interpolateByLine</string>
+	<string>interpolateByChar</string>
 	<key>outputFormat</key>
 	<string>text</string>
 	<key>outputLocation</key>
 	<string>replaceDocument</string>
 	<key>scope</key>
-	<string>source.php</string>
-	<key>semanticClass</key>
-	<string>callback.document.will-save</string>
+	<string>source.json</string>
 	<key>uuid</key>
-	<string>8EA74370-F7F4-4187-B04A-1CC017C47FC9</string>
+	<string>805E92D7-4A5A-4D9F-A031-D8AF98612399</string>
 	<key>version</key>
 	<integer>2</integer>
 </dict>

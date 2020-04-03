@@ -5,18 +5,35 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env bash
-. "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+	<string>#!/usr/bin/env ruby
+require 'json'
+require "open3" 
+require ENV['TM_SUPPORT_PATH'] + '/lib/textmate'
 
-prettier --stdin --parser=php || exit_show_tool_tip</string>
+input = STDIN.read
+
+stdout, error, status = Open3.capture3('python -mjson.tool', stdin_data: input)
+
+if !status.success?
+  TextMate.go_to :line =&gt; $1 if error =~ /line (\d+)/
+  TextMate.exit_show_tool_tip(error)
+end
+
+indent_level = (ENV['TM_SOFT_TABS'] == "NO" ? "\t" : " "*ENV['TM_TAB_SIZE'].to_i)
+
+begin
+hash = JSON.parse input
+print JSON.pretty_generate(hash, indent: indent_level)
+rescue Exception =&gt; e
+print input
+end
+</string>
 	<key>input</key>
 	<string>document</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>~@P</string>
 	<key>name</key>
-	<string>Prettier</string>
+	<string>Format on Save</string>
 	<key>outputCaret</key>
 	<string>interpolateByLine</string>
 	<key>outputFormat</key>
@@ -24,11 +41,11 @@ prettier --stdin --parser=php || exit_show_tool_tip</string>
 	<key>outputLocation</key>
 	<string>replaceDocument</string>
 	<key>scope</key>
-	<string>source.php</string>
+	<string>source.json</string>
 	<key>semanticClass</key>
 	<string>callback.document.will-save</string>
 	<key>uuid</key>
-	<string>8EA74370-F7F4-4187-B04A-1CC017C47FC9</string>
+	<string>9479A882-D6BF-4C4B-AAC8-F58836524D9B</string>
 	<key>version</key>
 	<integer>2</integer>
 </dict>

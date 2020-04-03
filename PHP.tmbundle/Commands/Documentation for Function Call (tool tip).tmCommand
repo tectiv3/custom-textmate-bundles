@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>changed</key>
+	<dict>
+		<key>outputCaret</key>
+		<string>afterOutput</string>
+		<key>outputFormat</key>
+		<string>text</string>
+		<key>outputLocation</key>
+		<string>toolTip</string>
+		<key>version</key>
+		<integer>2</integer>
+	</dict>
+	<key>deleted</key>
+	<array>
+		<string>keyEquivalent</string>
+		<string>output</string>
+	</array>
+	<key>isDelta</key>
+	<true/>
+	<key>uuid</key>
+	<string>19A164B7-4A3C-421B-9866-85FB9077A983</string>
+</dict>
+</plist>
